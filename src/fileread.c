@@ -91,11 +91,9 @@ file_read_word *read_word_node(char *word,int pos){ //read_word_node 记录一�
 	file_read_word * fword=NULL;
 	fword=(file_read_word*)calloc(1,sizeof(file_read_word));
 	if(fword==NULL){exit(-1);}
-//	fword->word=(char *)calloc(sizeof(word),sizeof(char));
         if(word!=NULL){		
 	        strcp(word,&(fword->word));
 	}
-//	fword->word=word,
 	fword->pos=pos;
 	fword->next=fword->previous=NULL;
 	return fword;
