@@ -3,7 +3,7 @@ CFLAGS=-Wall -O3
 #CFLAGS=-Wall  -g 
 LDFLAGS=-W1 -O1 -lm 
 #LDFLAGS=-Wall  -lm -g
-BIN=lfrac
+BIN=lfrac.out
 
 all:  fractal.o main.o
 	$(CC) $(LDFLAGS) main.o fractal.o -o $(BIN)
