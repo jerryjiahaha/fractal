@@ -141,7 +141,7 @@ int file_read_stack_output(file_read_stack *fstack){
         file_read_word *cur=NULL;
 	cur=fstack->ftop;
 	while(cur != fstack->fbase && cur!=NULL){
-		printf("cur_pos=%d\tcur_word=%s\n",cur->pos,cur->word);
+		printf(" %d\t%s\n",cur->pos,cur->word);
 		cur=cur->next;
 	}
 	return 0;
@@ -182,7 +182,6 @@ file_read_stack * file_read_build_stack(char *filename){
 			ftmp[wlen]='\0';
 	//	        printf("wl:%d\tftmp:%s\t",wlen,ftmp);
 			read_stack_pushr(frac_stack,read_word_node(ftmp,wlen));
-                        printf("\n");
 			fseek(fp,wcount,SEEK_CUR);
 		}
 	}
