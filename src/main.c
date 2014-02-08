@@ -25,12 +25,12 @@ int main(int argc,char *argv[]){
 	extern long double fractal_angle;
         fractal *fractal_stack=NULL;
 	char **fractal_rule=NULL;
-	char fractal_begin[]="X";   //initial state
+	char fractal_begin[]="FXF+Y++FXF+Y++FXF+Y++FXF+Y++";   //initial state
 	fractal_stack=fractal_init(fractal_begin);
-	char fractal_symbol[]="XF";  //符号表,用于迭代
-	fractal_rule=fractal_rule_build(fractal_symbol,"F-[[X]+X]+F[+FX]-X","FF");
+	char fractal_symbol[]="XFY";  //符号表,用于迭代
+	fractal_rule=fractal_rule_build(fractal_symbol,"+F[X]YF+X","FXF","Y+[X]+F");
 	fractal_time=6;
-	fractal_angle=M_PI*25/180;
+	fractal_angle=M_PI/6;
 	int i=0;
 	fractal_output(fractal_stack);
 	fractal_draw(fractal_stack,i);
