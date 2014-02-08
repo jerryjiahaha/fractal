@@ -58,10 +58,10 @@ int fractal_transform(fractal *fractal_stack,char fractal_symbol[],char **fracta
 	fractal *fpre=NULL;
 	fractal	*ftmp=NULL;
 	fractal	*frecord=NULL;
-	while(fractal_stack != NULL){           
+	while(fractal_stack != NULL){
 		frecord=fractal_stack->next;    //逐个出栈,匹配规则
 		state=0;
-		for(i=0;i<symlen && state==0;i++){     
+		for(i=0;i<symlen && state==0;i++){
 			if(fractal_stack->state==fractal_symbol[i]){    //与规则表中可替换字符进行比较
 				state=1;
 				rulen=strlen(fractal_rule[i]);
@@ -89,14 +89,14 @@ int fractal_output(fractal* fractal_stack){   //遍历
 	}
 	printf("\n");
 	return 0;
-}	
+}
 
 typedef struct fractal_pos{         //posititon or angle of fractal points
 	long double value;
 	struct fractal_pos* next;
 }fractal_pos;
 
-fractal_pos * fractal_pos_node(long double value){   //build node 
+fractal_pos * fractal_pos_node(long double value){   //build node
 	fractal_pos * fnode=NULL;
 	fnode=(fractal_pos*)calloc(1,sizeof(fractal_pos));
 	if(fnode==NULL){exit(-1);}

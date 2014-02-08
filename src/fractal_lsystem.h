@@ -8,6 +8,14 @@ typedef struct fractal {
 	struct fractal *next;
 }fractal;
 
+typedef struct fractal_lsystem_conf{
+	char *name;
+        long double angle;
+        char *begin;
+	char **rule;
+}fractal_lsystem_conf;
+
+
 extern long double fractal_angle;
 extern int fractal_time;
 extern char fractal_symbol[];

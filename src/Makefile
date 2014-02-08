@@ -14,6 +14,10 @@ main.o: main.c fractal_lsystem.h
 fractal.o: fractal.c fractal_lsystem.h
 	$(CC) $(CFLAGS) -c fractal.c -o fractal.o
 
+fileread.o: fileread.c 
+	$(CC) $(CFLAGS) -c fileread.c -o fileread.o
+	
+
 
 clean:
-	rm -rf *~ *.o $(BIN) *.dat core*
+	rm -rf *~ *.o $(BIN) *.dat *core*
