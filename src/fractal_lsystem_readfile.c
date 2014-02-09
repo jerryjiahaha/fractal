@@ -207,6 +207,7 @@ int fractal_lsystem_free(fractal_lsystem_conf *lsystem){
 		}
 		free(lsystem->symbol);
 	}
+	free(lsystem);
 	return 0;
 }
 
