@@ -16,7 +16,7 @@ fractal.o: fractal.c fractal_lsystem.h
 
 fileread.o: fileread.c 
 	$(CC) $(CFLAGS) -c fileread.c -o fileread.o
-	
+
 
 
 clean:

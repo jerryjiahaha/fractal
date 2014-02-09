@@ -12,6 +12,7 @@ typedef struct fractal_lsystem_conf{
 	char *name;
         long double angle;
         char *begin;
+	char *symbol;
 	char **rule;
 }fractal_lsystem_conf;
 
@@ -38,6 +39,6 @@ extern int fractal_draw(fractal *fractal_stack,int ftime);
  name  $name
  angle $fractal_angle
  begin $char_begin
- paint $position = $value
- rule  $symbol = $transformation
+ paint $position  $value
+ rule  $symbol (=) $transformation
 */

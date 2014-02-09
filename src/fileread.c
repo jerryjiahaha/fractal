@@ -1,4 +1,5 @@
 #include"file.h"
+#include"str_process.h"
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -47,15 +48,22 @@ int read_stack_destroy(file_read_stack *fstack){ //销毁
 		if( (fstack->ftop)->word != NULL ){
 			free((fstack->ftop)->word),(fstack->ftop)->word=NULL;
 		}
-		free(fstack->ftop);
-		fstack->ftop=tmp;
+		if(fstack->ftop!=NULL){
+			free(fstack->ftop);
+		        fstack->ftop=tmp;
+		}
 	}
-	free(fstack->fbase);
-        free(fstack);
+	if(fstack->fbase!=NULL){
+		free(fstack->fbase);
+	}
+	if(fstack!=NULL){
+		free(fstack);
+	}
 	tmp=NULL;
 	return 0;
 }
 
+/*
 int str_len(char *str){
 	int  i=0;
 	char c=0;
@@ -85,14 +93,14 @@ int strcp(char *from,char **to){;
 	}
 	return 0;
 }
-
+*/
 
 file_read_word *read_word_node(char *word,int pos){ //read_word_node 记录一个字符串的节点
 	file_read_word * fword=NULL;
 	fword=(file_read_word*)calloc(1,sizeof(file_read_word));
 	if(fword==NULL){exit(-1);}
         if(word!=NULL){		
-	        strcp(word,&(fword->word));
+	        str_cp(word,&(fword->word));
 	}
 	fword->pos=pos;
 	fword->next=fword->previous=NULL;

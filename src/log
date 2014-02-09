@@ -1,0 +1,24 @@
+-- Logs begin at 二 2013-12-31 09:51:51 CST, end at 日 2014-02-09 21:54:51 CST. --
+ 2月 09 21:54:47 Archlinux systemd[1]: Unit nginx.service entered failed state.
+ 2月 09 21:54:47 Archlinux systemd[1]: Starting A high performance web server and a reverse proxy server...
+-- Subject: Unit nginx.service has begun with start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit nginx.service has begun starting up.
+ 2月 09 21:54:47 Archlinux systemd[1]: nginx.service: control process exited, code=exited status=1
+ 2月 09 21:54:47 Archlinux systemd[1]: Failed to start A high performance web server and a reverse proxy server.
+-- Subject: Unit nginx.service has failed
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- Documentation: http://www.freedesktop.org/wiki/Software/systemd/catalog/be02cf6855d2428ba40df7e9d022f03d
+-- 
+-- Unit nginx.service has failed.
+-- 
+-- The result is failed.
+ 2月 09 21:54:47 Archlinux systemd[1]: Unit nginx.service entered failed state.
+ 2月 09 21:54:47 Archlinux nginx[4258]: 2014/02/09 21:54:47 [emerg] 4258#0: "upstream" directive is not allowed here in /etc/nginx/nginx.conf:90
+ 2月 09 21:54:47 Archlinux nginx[4261]: 2014/02/09 21:54:47 [emerg] 4261#0: "upstream" directive is not allowed here in /etc/nginx/nginx.conf:90
+ 2月 09 21:54:47 Archlinux nginx[4261]: nginx: configuration file /etc/nginx/nginx.conf test failed
+ 2月 09 21:54:50 Archlinux slim[180]: plasma-desktop(1597)/plasma StatusNotifierItemSource::refreshCallback: DBusMenu disabled for this application
+ 2月 09 21:54:51 Archlinux slim[180]: plasma-desktop(1597)/plasma StatusNotifierItemSource::refreshCallback: DBusMenu disabled for this application
