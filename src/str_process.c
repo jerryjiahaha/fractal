@@ -19,7 +19,6 @@ int str_len(char *str){
 
 
 int str_cp(char *from,char **to){
-	printf("from:\t%s\tsize:%d\t\twill:to:\t%s\n",from,str_len(from),*to);
 	int l=0,i=0;
         if(from==NULL){
 		fprintf(stderr,"string to paste is NULL\n");
@@ -28,8 +27,7 @@ int str_cp(char *from,char **to){
 	}
 	else{ 
          	if( *to != NULL ){
-			printf("to_not_NULL:%s,size:%d\n",*to,str_len(*to));
-     //    		free(*to),(*to)=NULL;
+         		free(*to),(*to)=NULL;
          	}
 		l=str_len(from);
 		*to=(char *)calloc(l,sizeof(char));
