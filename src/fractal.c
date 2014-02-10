@@ -6,7 +6,7 @@
 #include"fractal_lsystem.h"
 
 int fractal_time=4;
-long double fractal_angle=M_PI/4;
+//long double fractal_angle=M_PI/4;
 
 fractal* fractal_node(char state){    //build a fractal node
 	fractal *ftmp=NULL;
@@ -17,7 +17,9 @@ fractal* fractal_node(char state){    //build a fractal node
 	return ftmp;
 }
 
-fractal * fractal_init(char fractal_begin[]){     //init stack for L-system
+fractal * fractal_init(char *fractal_begin){     //init stack for L-system
+	printf("debug3\n");
+	if(fractal_begin==NULL){return NULL;}
 	int flength=strlen(fractal_begin);
 	int i=flength-1;
 	fractal *fbase=fractal_node('$');
@@ -50,7 +52,7 @@ int fractal_destroy(fractal *fractal_stack){  //destroy stack
 }
 
 
-int fractal_transform(fractal *fractal_stack,char fractal_symbol[],char **fractal_rule){   //produce L-system fractal
+int fractal_transform(fractal *fractal_stack,char *fractal_symbol,char **fractal_rule){   //produce L-system fractal
 	int i,j;
 	int state=0;
 	int symlen=strlen(fractal_symbol);
@@ -123,7 +125,7 @@ fractal_pos * fractal_draw_pop(fractal_pos *i){     //pop
 	return fnew;
 }
 
-int fractal_draw(fractal *fractal_stack,int ftime){   //draw fractal
+int fractal_draw(fractal *fractal_stack,long double fractal_angle,int ftime){   //draw fractal
 	fractal_pos *x,*y,*the;
 	x=fractal_pos_node(0);
 	y=fractal_pos_node(0);

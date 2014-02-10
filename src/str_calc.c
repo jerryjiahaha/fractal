@@ -5,5 +5,5 @@
 #include"str_process.h"
 
 long double  str_calc(char *input){
-	return M_PI/4;
+	return 0.4363323129985824;
 }
