@@ -42,7 +42,7 @@ int main(int argc,char *argv[]){
 //	fractal_angle=M_PI/6;
 	int i=0;
 	fractal_output(fractal_stack);
-	fractal_draw(fractal_stack,lsystem->angle,i);
+	fractal_draw(fractal_stack,lsystem->angle*M_PI,i);
 	for(i=0;i<fractal_time;i++){
 	        fractal_transform(fractal_stack,lsystem->symbol,lsystem->rule);
 	        fractal_output(fractal_stack);

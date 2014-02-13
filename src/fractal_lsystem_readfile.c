@@ -218,7 +218,7 @@ int  fractal_lsystem_conf_show(fractal_lsystem_conf *lsystem){
 		if(lsystem->name!=NULL){
 			printf("name\t%s\n",lsystem->name);
 		}
-		printf("angle\t%Lf\n",lsystem->angle);
+		printf("angle\t%Lf*Pi\n",lsystem->angle);
 		if(lsystem->begin!=NULL){
 			printf("begin\t%s\n",lsystem->begin);
 		}

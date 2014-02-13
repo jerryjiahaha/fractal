@@ -26,8 +26,6 @@ str_calc.o: str_calc.c  str_process.h
 fractal_lsystem_readfile.o: fractal_lsystem_readfile.c fractal_lsystem.h
 	$(CC) $(CFLAGS) -c fractal_lsystem_readfile.c -o fractal_lsystem_readfile.o 
 	
-#fractal_conf.o: str_process.o str_calc.o fractal_lsystem_readfile.o fileread.o
-#	$(CC) $(LDFLAGS) str_process.o str_calc.o fractal_lsystem_readfile.o fileread.o -o fractal_conf.o
 
 clean:
 	rm -rf *~ *.o $(BIN) *.dat *core*
