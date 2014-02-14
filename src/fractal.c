@@ -5,7 +5,6 @@
 
 #include"fractal_lsystem.h"
 
-int fractal_time=4;
 //long double fractal_angle=M_PI/4;
 
 fractal* fractal_node(char state){    //build a fractal node

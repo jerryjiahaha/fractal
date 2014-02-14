@@ -87,7 +87,7 @@ fractal_lsystem_conf * fractal_lsystem_syntax(file_read_stack * fstack){
 	if(lsystem==NULL){exit(-1);}
 	lsystem->name=lsystem->begin=lsystem->symbol=NULL;
 	lsystem->rule=NULL;
-	int fname=0,fang=0,fbegin=0,frule=0;
+	int fname=0,fang=0,fbegin=0,frule=0,ftime=0;
 	file_read_word *cur=NULL;
 	cur=fstack->ftop;
 	while(cur != fstack->fbase){
@@ -126,6 +126,31 @@ fractal_lsystem_conf * fractal_lsystem_syntax(file_read_stack * fstack){
 						 }
 						 else if(fang==2){
 							 fprintf(stderr,"more than one angle! use the first!\n");
+						 }
+					 }
+					 else{
+						 fprintf(stderr,"syntax error: unrecognize symbol '%s' , maybe you mean 'angle'?\n",cur->word);
+						 exit(9);
+					 }
+					 break;
+				 }
+		        case 't':{
+					 if(strcmp(cur->word,"time") ==0){
+						 cur=cur->next;
+						 if(cur == fstack->fbase ){
+							 fprintf(stderr,"syntax error: none after time\n");
+							 exit(4);
+						 }
+						 ftime+=1;
+						 if(ftime==1){
+							 lsystem->time=(int)str_calc(cur->word);
+							 if(lsystem->time<1){
+								 fprintf(stderr,"'time' should not be smaller than 1!\nmake time=1\n");
+								 lsystem->time=1;
+							 }
+						 }
+						 else if(ftime==2){
+							 fprintf(stderr,"more than one time! use the first!\n");
 						 }
 					 }
 					 else{
@@ -218,7 +243,8 @@ int  fractal_lsystem_conf_show(fractal_lsystem_conf *lsystem){
 		if(lsystem->name!=NULL){
 			printf("name\t%s\n",lsystem->name);
 		}
-		printf("angle\t%Lf*Pi\n",lsystem->angle);
+		printf("angle\t%Lf\n",lsystem->angle);
+		printf("time\t%d\n",lsystem->time);
 		if(lsystem->begin!=NULL){
 			printf("begin\t%s\n",lsystem->begin);
 		}

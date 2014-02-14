@@ -11,10 +11,12 @@ typedef struct fractal {
 typedef struct fractal_lsystem_conf{
 	char *name;
         long double angle;
+	int  time;
         char *begin;
 	char *symbol;
 	char **rule;
 }fractal_lsystem_conf;
+
 
 
 //extern long double fractal_angle;
