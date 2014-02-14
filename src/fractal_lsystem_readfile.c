@@ -238,28 +238,15 @@ int  fractal_lsystem_conf_show(fractal_lsystem_conf *lsystem){
 
 
 
-//int main(int argc,char *argv[]){
 fractal_lsystem_conf * fractal_lsystem_conf_get(char *filename){
 	file_read_stack * frac_stack=NULL;
 	fractal_lsystem_conf * lsystem=NULL;
-	
-//	if(argc==1){
-//		frac_stack=file_read_build_stack("lsystem.conf");
-//	}
-//	else{
-//		frac_stack=file_read_build_stack(argv[1]);
-//	}
        
 	frac_stack=file_read_build_stack(filename);
 	file_read_stack_output(frac_stack);
         lsystem=fractal_lsystem_syntax(frac_stack);
         fractal_lsystem_conf_show(lsystem);
-	printf("debug\n");
 	read_stack_destroy(frac_stack),frac_stack=NULL;
-	printf("debug\n");
-//	if(lsystem !=NULL){
-//		fractal_lsystem_free(lsystem);
-//		lsystem=NULL;
-//	}
+	
 	return lsystem;
 }

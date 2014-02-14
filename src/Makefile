@@ -28,4 +28,4 @@ fractal_lsystem_readfile.o: fractal_lsystem_readfile.c fractal_lsystem.h
 	
 
 clean:
-	rm -rf *~ *.o $(BIN) *.dat *core*
+	rm -rf *~ *.o $(BIN) *.dat *core* *.out *log

@@ -1,4 +1,3 @@
-#include<math.h>
 #include<stdlib.h>
 #include<stdio.h>
 #include<stdarg.h>
@@ -34,15 +33,14 @@ int main(int argc,char *argv[]){
 	}
 //	char **fractal_rule=NULL;
 //	char fractal_begin[]="FXF+Y++FXF+Y++FXF+Y++FXF+Y++";   //initial state
-	printf("debug2\n");
 	fractal_stack=fractal_init(lsystem->begin);
 //	char fractal_symbol[]="XFY";  //符号表,用于迭代
 //	fractal_rule=fractal_rule_build(fractal_symbol,"+F[X]YF+X","FXF","Y+[X]+F");
 	fractal_time=6;
 //	fractal_angle=M_PI/6;
-	int i=0;
+	int  i=0;
 	fractal_output(fractal_stack);
-	fractal_draw(fractal_stack,lsystem->angle*M_PI,i);
+	fractal_draw(fractal_stack,lsystem->angle,i);
 	for(i=0;i<fractal_time;i++){
 	        fractal_transform(fractal_stack,lsystem->symbol,lsystem->rule);
 	        fractal_output(fractal_stack);

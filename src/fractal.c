@@ -18,7 +18,6 @@ fractal* fractal_node(char state){    //build a fractal node
 }
 
 fractal * fractal_init(char *fractal_begin){     //init stack for L-system
-	printf("debug3\n");
 	if(fractal_begin==NULL){return NULL;}
 	int flength=strlen(fractal_begin);
 	int i=flength-1;

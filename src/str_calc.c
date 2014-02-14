@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include<string.h>
+#include<math.h>
 
 #define syntaxerror "\033[1;31m syntax error: \033[0m"
 
@@ -193,6 +194,30 @@ str_calc_stack * str_calc_syntax(char *input,int *pos){   //逆波兰的构造
 					 *pos+=1;
 					 break;
 				 }
+			case 'p':{
+					 *pos+=1;
+					 if(input[*pos]=='i'){
+						 result=str_calc_stack_push(result,0,M_PI);
+						 *pos+=1;
+					 }
+					 else{
+						 fprintf(stderr,"%sunknown symbol(or already at the end) '%c' at '%s' in '%s'\ndo you mean pi?)\n",syntaxerror,input[*pos],input+*pos,input);
+						 if('a'<=input[*pos] && input[*pos]<='Z'){
+							 *pos+=1;
+						 }
+						 else{
+							 str_calc_stack_destroy(result);
+							 str_calc_stack_destroy(tmp);
+							 exit(13);
+						 }
+					 }
+					 break;
+				 }
+			case 'e':{
+					 result=str_calc_stack_push(result,0,M_E);
+					 *pos+=1;
+					 break;
+				 }
 			default:{
 					result=str_calc_stack_push(result,0,str_to_longdouble(input,pos));
 				}
@@ -304,15 +329,25 @@ long double str_calc_revpolsum(str_calc_stack *calc){
 
 
 
-int main(int argc,char *argv[]){
-	if(argc==0){return 0;}
+long double str_calc(char *input){
+	long double value=0;
 	str_calc_stack * calinput=NULL;
 	int i=0;
-	calinput=str_calc_syntax(argv[1],&i);
-	str_calc_stack_print(calinput);
-	long double r=str_calc_revpolsum(calinput);
+	calinput=str_calc_syntax(input,&i);
+//	str_calc_stack_print(calinput);
+	value=str_calc_revpolsum(calinput);
 
-	printf("\033[1;34mresult is \033[1;32m %Lf\033[0m\n",r);
-	return 0;
+//	printf("\033[1;34mresult is \033[1;32m %Lf\033[0m\n",r);
+	return value;
 }
 
+
+/*
+int main(int argc,char *argv[]){
+	if(argc==1){return 0;}
+	else{
+		printf("\033[1;34mresult is \033[1;32m %Lf\033[0m\n",str_calc(argv[1]));
+	}
+	return 0;
+}
+*/

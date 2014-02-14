@@ -14,7 +14,7 @@ typedef struct str_calc_num{
 }str_calc_num;
 
 long double str_to_longdouble(char *input,int *pos);
-long double str_calc(char *input,int *pos,int *pairflag);
+long double str_calc(char *input);
 
 int str_len(char *str);
 int str_cp(char *from,char **to);
