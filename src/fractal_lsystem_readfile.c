@@ -5,7 +5,6 @@
 #include"file.h"
 #include"str_process.h"
 
-int fractal_lsystem_conf_show(fractal_lsystem_conf *lsystem);
 
 char **je_realloc(char **origin,int size){
         if(size<=0){return NULL;}
@@ -32,6 +31,57 @@ char **je_realloc(char **origin,int size){
 	}
 	return tmp;
 }
+
+
+int fractal_lsystem_free(fractal_lsystem_conf *lsystem){
+	if(lsystem->name!=NULL){
+		free(lsystem->name);
+	}
+	if(lsystem->begin!=NULL){
+		free(lsystem->begin);
+	}
+	int i=0,j=0;
+	if(lsystem->symbol!=NULL){
+	        j=str_len(lsystem->symbol)-1;
+		for(i=0;i<j;i++){
+			if(lsystem->rule!=NULL){
+				free(lsystem->rule[i]);
+			}
+		}
+                if(lsystem->rule!=NULL){
+		        free(lsystem->rule);
+		}
+		free(lsystem->symbol);
+	}
+	free(lsystem);
+	return 0;
+}
+
+int  fractal_lsystem_conf_show(fractal_lsystem_conf *lsystem){
+	printf("\n");
+	int i=0,j=0;
+        if(lsystem!=NULL){
+		if(lsystem->name!=NULL){
+			printf("name\t%s\n",lsystem->name);
+		}
+		printf("angle\t%Lf\n",lsystem->angle);
+		printf("time\t%d\n",lsystem->time);
+		if(lsystem->begin!=NULL){
+			printf("begin\t%s\n",lsystem->begin);
+		}
+		i=str_len(lsystem->symbol);
+		if(i>1){
+			i-=1;
+			printf("symbol\t%s\n",lsystem->symbol);
+                        for(j=0;j<i;j++){
+				printf("rule\t%c = %s\n",lsystem->symbol[j],lsystem->rule[j]);
+			}
+		}
+		return 0;
+	}
+	return 1;
+}
+
 
 
 
@@ -211,57 +261,6 @@ fractal_lsystem_conf * fractal_lsystem_syntax(file_read_stack * fstack){
 	}
         return lsystem;
 }
-
-int fractal_lsystem_free(fractal_lsystem_conf *lsystem){
-	if(lsystem->name!=NULL){
-		free(lsystem->name);
-	}
-	if(lsystem->begin!=NULL){
-		free(lsystem->begin);
-	}
-	int i=0,j=0;
-	if(lsystem->symbol!=NULL){
-	        j=str_len(lsystem->symbol)-1;
-		for(i=0;i<j;i++){
-			if(lsystem->rule!=NULL){
-				free(lsystem->rule[i]);
-			}
-		}
-                if(lsystem->rule!=NULL){
-		        free(lsystem->rule);
-		}
-		free(lsystem->symbol);
-	}
-	free(lsystem);
-	return 0;
-}
-
-int  fractal_lsystem_conf_show(fractal_lsystem_conf *lsystem){
-	printf("\n");
-	int i=0,j=0;
-        if(lsystem!=NULL){
-		if(lsystem->name!=NULL){
-			printf("name\t%s\n",lsystem->name);
-		}
-		printf("angle\t%Lf\n",lsystem->angle);
-		printf("time\t%d\n",lsystem->time);
-		if(lsystem->begin!=NULL){
-			printf("begin\t%s\n",lsystem->begin);
-		}
-		i=str_len(lsystem->symbol);
-		if(i>1){
-			i-=1;
-			printf("symbol\t%s\n",lsystem->symbol);
-                        for(j=0;j<i;j++){
-				printf("rule\t%c = %s\n",lsystem->symbol[j],lsystem->rule[j]);
-			}
-		}
-		return 0;
-	}
-	return 1;
-}
-
-
 
 
 fractal_lsystem_conf * fractal_lsystem_conf_get(char *filename){
